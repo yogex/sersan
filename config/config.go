@@ -16,12 +16,12 @@ type Config struct {
   RetryCount               int32  `envconfig:"retry_count" default:"30"`
   SigningKey               string `envconfig:"signing_key" default:"secret_key"`
   GridLabel                string `envconfig:"grid_label" default:"dev"`
-  NodeSelectorKey          string `envconfig:"node_selector_key" default:""`
-  NodeSelectorValue        string `envconfig:"node_selector_value" default:"c"`
+  NodeSelectorKey          string `envconfig:"node_selector_key"`
+  NodeSelectorValue        string `envconfig:"node_selector_value"`
   CPURequest               string `envconfig:"cpu_request" default:"400m"`
-  MemoryRequest            string `envconfig:"memory_request" default:"1000Mi"`
+  MemoryRequest            string `envconfig:"memory_request" default:"600Mi"`
   CPULimit                 string `envconfig:"cpu_limit" default:"600m"`
-  MemoryLimit              string `envconfig:"memory_limit" default:"1200Mi"`
+  MemoryLimit              string `envconfig:"memory_limit" default:"1000Mi"`
   GridTimeout              int    `envconfig:"sersan_grid_timeout" default:"300"`
 }
 
