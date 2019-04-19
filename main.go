@@ -7,8 +7,6 @@ import (
 	"path/filepath"
 
 	"github.com/salestock/sersan/config"
-	"github.com/salestock/sersan/handler"
-	"github.com/salestock/sersan/router"
 
 	"github.com/facebookgo/inject"
 )
@@ -34,14 +32,14 @@ func main() {
 	}
 
 	// Setup dependency injection
-	var rh handler.RootHandler
+	var rh RootHandler
 	err = inject.Populate(&rh)
 	if err != nil {
 		log.Printf("%v", err)
 	}
 
 	// Setup router
-	r := router.CreateRouter(rh)
+	r := CreateRouter(rh)
 
 	// Serve
 	log.Printf("Sersan-api started in port: " + conf.Port)

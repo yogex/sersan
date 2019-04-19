@@ -1,6 +1,13 @@
 # Sersan
 
-Auto scalable selenium/webdriver cluster in Kubernetes
+Sersan is optimised selenium/webdriver hub for kubernetes cluster. 
+
+## Features
+- Easy setup and maintenance.
+- Less memory consumption.
+- Unlimited auto-scale.
+- Unified load distribution.
+- 
 
 ## Getting Started
 
@@ -9,23 +16,23 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 ```
-Kubernetes
+Kubernetes cluster
 ```
 
-### Installing
+### Installation
 
 ```
 < modified here>
 ```
 
-## Deployment
+## Development
 
 Add additional notes about how to deploy this on a live system
 
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/salestock/sersan/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/salestock/sersan/CONTRIBUTING.md) for details on our code of conduct.
 
 ## Authors
 

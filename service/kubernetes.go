@@ -130,9 +130,6 @@ func (k KubernetesClient) CreatePod(gridBase *GridBase) (podName string, err err
 				},
 			},
             RestartPolicy: apiv1.RestartPolicyNever,
-			NodeSelector: map[string]string{
-				conf.NodeSelectorKey: conf.NodeSelectorValue,
-			},
 			Volumes: []apiv1.Volume{
 				{
 					Name: "dshm",
@@ -145,6 +142,12 @@ func (k KubernetesClient) CreatePod(gridBase *GridBase) (podName string, err err
 			},
 		},
 	}
+
+    if conf.NodeSelectorKey != "" && conf.NodeSelectorValue != "" {
+        spec.Spec.NodeSelector = map[string]string{
+            conf.NodeSelectorKey: conf.NodeSelectorValue,
+        }
+    }
 
 	log.Print("Creating pod")
 	pod, err := podsClient.Create(spec)

@@ -1,11 +1,9 @@
-package router
+package main
 
 import (
 	"net"
 	"net/http"
 	"strings"
-
-	"github.com/salestock/sersan/handler"
 )
 
 type request struct {
@@ -18,14 +16,14 @@ func (r request) localaddr() string {
 	return net.JoinHostPort("127.0.0.1", port)
 }
 
-func mux(rh handler.RootHandler) http.Handler {
+func mux(rh RootHandler) http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/session", rh.Create)
 	mux.HandleFunc("/session/", rh.Proxy)
 	return mux
 }
 
-func CreateRouter(rh handler.RootHandler) http.Handler {
+func CreateRouter(rh RootHandler) http.Handler {
 	router := http.NewServeMux()
 	router.HandleFunc("/wd/hub/", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Content-Type", "application/json")
