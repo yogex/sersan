@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: sersan
-        image: dimasaryoprakoso/sersan:1.0
+        image: dimasaryoprakoso/sersan:1.0.0-rc1
         imagePullPolicy: IfNotPresent
         env:
         - name: PORT
