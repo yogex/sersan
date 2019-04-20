@@ -1,5 +1,5 @@
-hash: 14f5770ec72cdbee38c69c998de380908b63d6fa21f1de6e3807f9e442c992f6
-updated: 2019-03-07T00:23:11.027674027Z
+hash: d3828b3b14d6277e62889a01b33df3638aa50e485ebc76c77f549ca42170ef6c
+updated: 2019-04-20T14:35:44.239643701Z
 imports:
 - name: github.com/dgrijalva/jwt-go
   version: 06ea1031745cb8b3dab3f6a236daf2b0aa468b7e
@@ -72,6 +72,8 @@ imports:
   - buffer
   - jlexer
   - jwriter
+- name: github.com/patrickmn/go-cache
+  version: 5633e0862627c011927fa39556acae8b1f1df58a
 - name: github.com/peterbourgon/diskv
   version: 5f041e8faa004a95c88a202771f4cc3e991971e6
 - name: github.com/PuerkitoBio/purell
