@@ -18,6 +18,10 @@ import (
 	"k8s.io/client-go/rest"
 )
 
+const (
+    NamespaceSersan = "sersan"
+)
+
 // KubernetesClient Kubernetes client
 type KubernetesClient struct {
 	Clientset *kubernetes.Clientset
@@ -81,7 +85,7 @@ func (k KubernetesClient) CreatePod(gridBase *GridBase) (podName string, err err
         entryPoint = gridBase.Grid.EntryPoint
     }
 	conf := config.Get()
-	podsClient := k.Clientset.CoreV1().Pods(apiv1.NamespaceDefault)
+	podsClient := k.Clientset.CoreV1().Pods(NamespaceSersan)
 	ports := []apiv1.ContainerPort{
 		{
 			Name:          "http",
@@ -162,7 +166,7 @@ func (k KubernetesClient) CreatePod(gridBase *GridBase) (podName string, err err
 
 // WaitUntilReady Wait until pod ready
 func (k KubernetesClient) WaitUntilReady(name string, timeout int32) (ip string, err error) {
-	podsClient := k.Clientset.CoreV1().Pods(apiv1.NamespaceDefault)
+	podsClient := k.Clientset.CoreV1().Pods(NamespaceSersan)
 	waitTimeout := time.NewTimer(time.Duration(timeout) * time.Millisecond)
 	defer waitTimeout.Stop()
 	tick := time.Tick(200 * time.Millisecond)
@@ -189,7 +193,7 @@ func (k KubernetesClient) WaitUntilReady(name string, timeout int32) (ip string,
 
 // DeletePod Delete pod
 func (k KubernetesClient) DeletePod(name string) error {
-	podsClient := k.Clientset.CoreV1().Pods(apiv1.NamespaceDefault)
+	podsClient := k.Clientset.CoreV1().Pods(NamespaceSersan)
 	err := podsClient.Delete(name, &metav1.DeleteOptions{})
 	if err != nil {
 		return err
