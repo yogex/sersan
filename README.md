@@ -6,21 +6,19 @@ Session id is a jwt token contains some information includes original session id
 
 ## Features
 
-- Easy setup. Only need to deploy single binary to get everything up, running and ready to receive high concurrent browser testing.
+- Easy setup and maintenance. Only execute a few commands to get everything up and ready to receive high concurrent browser testing. Update browser version is easier as edit a yaml file.
 - One pod for one test. Ensure the test environment always clean and fresh.
 - Less memory consumption.
-- Unlimited auto-scale.
+- Unlimited auto-scale. Only need a single cluster to handle test from all projects.
 - Unified load distribution.
 - Stateless. You can scale up or deploy new version of the sersan without worrying the running test.
 - Compatible with selenium/webdriver test. No need modification of your existing test.
-- Support VNC viewer to see the running browser. Use selenium chrome/firefox debug image to use VNC. 
+- Support VNC viewer to see the running browser. Use selenium chrome/firefox debug image to use VNC.
 
 
 ## Prerequisites
 
-```
 1. Kubernetes cluster. You may use [minikube](https://github.com/kubernetes/minikube) or [kind](https://github.com/kubernetes-sigs/kind) for local development.
-```
 
 
 ## Installation
@@ -32,7 +30,7 @@ kubectl create -f https://git.io/fjOiE
 
 Create config map contains available browsers information. Refer to `config/browsers.yaml`
 ```
-kubectl create -n sersan configmap --from-file=https://git.io/fjOig
+kubectl create -n sersan configmap sersan-browsers --from-file=https://git.io/fjOig
 ```
 
 Deploy the sersan application
