@@ -1,8 +1,8 @@
 # Sersan
 
-Sersan is an optimised selenium/webdriver hub for Kubernetes cluster written in golang. It employs Kubernetes engine to manage the lifecycle and queue of browser containers, and ensures the test environment is always clean and fresh.
+Sersan is an optimised Selenium/WebDriver hub for Kubernetes cluster written in golang. It employs Kubernetes engine to manage the lifecycle and queue of browser containers, and ensures the test environment is always clean and fresh.
 Each time it receives a new session request, Sersan will ask Kubernetes to create a new pod based on the browser and version that matches the requested capabilities. Once the pod is running, the next request will be forwarded to the created pod. The pod will be deleted if Sersan receives a delete session request.
-The session ID is a JWT token containing, among other things, the original session ID from webdriver, the pod's IP address, the selenium/webdriver port, and VNC port.
+The session ID is a JWT token containing, among other things, the original session ID from WebDriver, the pod's IP address, the Selenium/WeDdriver port, and VNC port.
 
 ## Features
 
@@ -12,7 +12,7 @@ The session ID is a JWT token containing, among other things, the original sessi
 - Unlimited auto-scale. Only a single cluster is required to handle tests from all projects.
 - Unified load distribution.
 - Stateless. You can scale up or deploy a new version of Sersan without worrying about the currently running test.
-- Compatible with selenium/webdriver test. No need to modify any of your existing tests.
+- Compatible with Selenium/WebDriver test. No need to modify any of your existing tests.
 - Support VNC viewer to observe the running browser. Use Selenium Chrome/Firefox debug image to use VNC.
 
 ## Prerequisites
@@ -36,10 +36,10 @@ Deploy the Sersan application
 kubectl create -n sersan -f https://git.io/fjOi0
 ```
 
-That's all. You can now run your tests just like you would run it on selenium hub. Point your webdriver remote address to Sersan service ip.
+That's all. You can now run your tests just like you would run it on Selenium hub. Point your WebDriver remote address to Sersan service ip.
 ```
 kubectl get services -lapp=sersan
-# webdriver remote address
+# WebDriver remote address
 http://<service ip>:4444/wd/hub
 ```
 
@@ -73,7 +73,7 @@ Finally, redeploy Sersan application.
 Sersan can be customised through environment variables. Supported environment variables are:
 - **PORT**: Sersan port. Default is 4444.
 - **BROWSER_CONFIG_FILE**: Custom browser config file. Default is `config/browsers.yaml`.
-- **STARTUP_TIMEOUT**: Timeout from new session request until selenium/webdriver is running. Default is 900000 (miliseconds).
+- **STARTUP_TIMEOUT**: Timeout from new session request until Selenium/WebDriver is running. Default is 900000 (miliseconds).
 - **NEW_SESSION_ATTEMPT_TIMEOUT**: Timeout from pod running and new session created. Default is 60000 (miliseconds).
 - **RETRY_COUNT**: Number of attempts to create a session. Default is 30.
 - **SIGNING_KEY**: Session ID signing key. Default is secret_key.
@@ -88,7 +88,7 @@ Sersan can be customised through environment variables. Supported environment va
 
 ## Browser Images
 
-Sersan is compatible with the following selenium standalone or selenoid browser images:
+Sersan is compatible with the following Selenium standalone or selenoid browser images:
 - [Selenium Chrome](https://hub.docker.com/r/selenium/standalone-chrome)
 - [Selenium Chrome Debug](https://hub.docker.com/r/selenium/standalone-chrome-debug)
 - [Selenium Firefox](https://hub.docker.com/r/selenium/standalone-firefox)
