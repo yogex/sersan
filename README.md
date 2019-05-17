@@ -2,7 +2,7 @@
 
 Sersan is an optimised Selenium/WebDriver hub for Kubernetes cluster written in golang. It employs Kubernetes engine to manage the lifecycle and queue of browser containers, and ensures the test environment is always clean and fresh.
 Each time it receives a new session request, Sersan will ask Kubernetes to create a new pod based on the browser and version that matches the requested capabilities. Once the pod is running, the next request will be forwarded to the created pod. The pod will be deleted if Sersan receives a delete session request.
-The session ID is a JWT token containing, among other things, the original session ID from WebDriver, the pod's IP address, the Selenium/WeDdriver port, and VNC port.
+The session ID is a JWT token containing, among other things, the original session ID from WebDriver, the pod's IP address, the Selenium/WebDriver port, and VNC port.
 
 ## Features
 
