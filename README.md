@@ -1,6 +1,6 @@
 # Sersan
 
-Sersan is an optimised Selenium/WebDriver hub for Kubernetes cluster written in golang. It employs Kubernetes engine to manage the lifecycle and queue of browser containers, and ensures the test environment is always clean and fresh.
+Sersan is an optimised Selenium/WebDriver hub for Kubernetes cluster written in Golang. It employs Kubernetes engine to manage the lifecycle and queue of browser containers, and ensures the test environment is always clean and fresh.
 Each time it receives a new session request, Sersan will ask Kubernetes to create a new pod based on the browser and version that matches the requested capabilities. Once the pod is running, the next request will be forwarded to the created pod. The pod will be deleted if Sersan receives a delete session request.
 The session ID is a JWT token containing, among other things, the original session ID from WebDriver, the pod's IP address, the Selenium/WebDriver port, and VNC port.
 
@@ -71,20 +71,23 @@ Finally, redeploy Sersan application.
 ## Customisation
 
 Sersan can be customised through environment variables. Supported environment variables are:
-- **PORT**: Sersan port. Default is 4444.
-- **BROWSER_CONFIG_FILE**: Custom browser config file. Default is `config/browsers.yaml`.
-- **STARTUP_TIMEOUT**: Timeout from new session request until Selenium/WebDriver is running. Default is 900000 (miliseconds).
-- **NEW_SESSION_ATTEMPT_TIMEOUT**: Timeout from pod running and new session created. Default is 60000 (miliseconds).
-- **RETRY_COUNT**: Number of attempts to create a session. Default is 30.
-- **SIGNING_KEY**: Session ID signing key. Default is secret_key.
-- **GRID_LABEL**: Browser's pod label. Default is `dev`.
-- **NODE_SELECTOR_KEY**: Node selector key. Default is empty.
-- **NODE_SELECTOR_VALUE**: Node selector value. Default is empty.
-- **SERSAN_GRID_TIMEOUT**: Maximum age of the pod, after which it will be deleted automatically. Default is 300 (seconds).
-- **CPU_LIMIT**: CPU limit of browser containers. Default is `600m`.
-- **CPU_REQUEST**: CPU request of browser containers. Default is `400m`.
-- **MEMORY_LIMIT**: Memory limit of browser containers. Default is `600Mi`.
-- **MEMORY_REQUEST**: Memory request of browser containers. Default is `1000Mi`.
+
+| Variable | Description | Default Value |
+|----------|-------------|---------------|
+|**PORT**|Sersan port.|`4444`|
+|**BROWSER_CONFIG_FILE**|Custom browser config file.|`config/browsers.yaml`
+|**STARTUP_TIMEOUT**|Timeout from new session request until Selenium/WebDriver is running.|`900000` (miliseconds)|
+|**NEW_SESSION_ATTEMPT_TIMEOUT**|Timeout from pod running and new session created.|`60000` (miliseconds)|
+|**RETRY_COUNT**|Number of attempts to create a session.|`30`|
+|**SIGNING_KEY**|Session ID signing key|`secret_key`|
+|**GRID_LABEL**|Browser's pod label.|`dev`|
+|**NODE_SELECTOR_KEY**|Node selector key.||
+|**NODE_SELECTOR_VALUE**|Node selector value.||
+|**SERSAN_GRID_TIMEOUT**|Maximum age of the pod, after which it will be deleted automatically.|`300` (seconds)|
+|**CPU_LIMIT**|CPU limit of browser containers.|`600m`|
+|**CPU_REQUEST**|CPU request of browser containers.|`400m`|
+|**MEMORY_LIMIT**|Memory limit of browser containers.|`600Mi`|
+|**MEMORY_REQUEST**|Memory request of browser containers.|`1000Mi`|
 
 ## Browser Images
 
