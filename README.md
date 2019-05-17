@@ -1,7 +1,7 @@
 # Sersan
 
-Sersan is an optimised selenium/webdriver hub for kubernetes cluster written in golang. It employs kubernetes engine to manage the lifecycle and queue of browser containers, and ensures the test environment is always clean and fresh.
-Each time it receives a new session request, sersan will ask kubernetes to create a new pod based on the browser and version that matches the requested capabilities. Once the pod is running, the next request will be forwarded to the created pod. The pod will be deleted if sersan receives a delete session request.
+Sersan is an optimised selenium/webdriver hub for Kubernetes cluster written in golang. It employs Kubernetes engine to manage the lifecycle and queue of browser containers, and ensures the test environment is always clean and fresh.
+Each time it receives a new session request, Sersan will ask Kubernetes to create a new pod based on the browser and version that matches the requested capabilities. Once the pod is running, the next request will be forwarded to the created pod. The pod will be deleted if Sersan receives a delete session request.
 The session ID is a JWT token containing, among other things, the original session ID from webdriver, the pod's IP address, the selenium/webdriver port, and VNC port.
 
 ## Features
@@ -11,7 +11,7 @@ The session ID is a JWT token containing, among other things, the original sessi
 - Less memory consumption.
 - Unlimited auto-scale. Only a single cluster is required to handle tests from all projects.
 - Unified load distribution.
-- Stateless. You can scale up or deploy a new version of sersan without worrying about the currently running test.
+- Stateless. You can scale up or deploy a new version of Sersan without worrying about the currently running test.
 - Compatible with selenium/webdriver test. No need to modify any of your existing tests.
 - Support VNC viewer to observe the running browser. Use Selenium Chrome/Firefox debug image to use VNC.
 
@@ -21,7 +21,7 @@ The session ID is a JWT token containing, among other things, the original sessi
 
 ## Installation
 
-Create namespace for all sersan resources
+Create namespace for all Sersan resources
 ```
 kubectl create -f https://git.io/fjOiE
 ```
@@ -31,12 +31,12 @@ Create config map containng information on all available browsers. Refer to `con
 kubectl create -n sersan configmap sersan-browsers --from-file=https://git.io/fjOig
 ```
 
-Deploy the sersan application
+Deploy the Sersan application
 ```
 kubectl create -n sersan -f https://git.io/fjOi0
 ```
 
-That's all. You can now run your tests just like you would run it on selenium hub. Point your webdriver remote address to sersan service ip.
+That's all. You can now run your tests just like you would run it on selenium hub. Point your webdriver remote address to Sersan service ip.
 ```
 kubectl get services -lapp=sersan
 # webdriver remote address
@@ -45,7 +45,7 @@ http://<service ip>:4444/wd/hub
 
 ## Development
 
-Get sersan source
+Get Sersan source
 ```
 go get -u https://github.com/salestock/sersan
 ```
@@ -66,7 +66,7 @@ Build docker image
 docker build -t <your domain>/sersan:latest .
 ```
 
-Finally, redeploy sersan application.
+Finally, redeploy Sersan application.
 
 ## Customisation
 
