@@ -21,20 +21,13 @@ The session ID is a JWT token containing, among other things, the original sessi
 
 ## Installation
 
-Create namespace for all Sersan resources
+To install simply use `kubectl` to apply resources.
+
 ```
-kubectl create -f https://git.io/fjOiE
+kubectl apply -f manifests/
 ```
 
-Create config map containng information on all available browsers. Refer to `config/browsers.yaml`
-```
-kubectl create -n sersan configmap sersan-browsers --from-file=https://git.io/fjOig
-```
-
-Deploy the Sersan application
-```
-kubectl create -n sersan -f https://git.io/fjOi0
-```
+Check the sersan namespace (or the namespace you have specific in namespace: ) and make sure the pods are running.
 
 That's all. You can now run your tests just like you would run it on Selenium hub. Point your WebDriver remote address to Sersan service ip.
 ```
