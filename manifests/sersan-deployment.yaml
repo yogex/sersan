@@ -4,6 +4,7 @@ metadata:
   name: sersan
   labels:
     app: sersan
+  namespace: sersan
 spec:
   replicas: 1
   selector:
@@ -48,12 +49,12 @@ spec:
           defaultMode: 420
           name: sersan-browsers
         name: browsers
- 
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: sersan
+  namespace: sersan
 spec:
   selector:
     app: sersan
