@@ -49,7 +49,7 @@ cd $GO_PATH/src/github.com/salestock/sersan
 glide install
 ```
 
-If you have (realize)[https://github.com/oxequa/realize] installed, simply run bellow command.
+If you have [realize](https://github.com/oxequa/realize) installed, simply run bellow command.
 ```
 realize start --build --run --no-config
 ```
