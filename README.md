@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/salestock/sersan.svg?branch=master)](https://travis-ci.org/salestock/sersan)
+
 # Sersan
 
 Sersan is an optimised Selenium/WebDriver hub for Kubernetes cluster written in Golang. It employs Kubernetes engine to manage the lifecycle and queue of browser containers, and ensures the test environment is always clean and fresh.
