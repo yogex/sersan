@@ -1,0 +1,46 @@
+module github.com/salestock/sersan
+
+go 1.13
+
+require (
+	github.com/PuerkitoBio/purell v1.0.0
+	github.com/PuerkitoBio/urlesc v0.0.0-20160726150825-5bd2802263f2
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
+	github.com/emicklei/go-restful v1.1.4-0.20170410110728-ff4f55a20633
+	github.com/facebookgo/inject v0.0.0-20161006174721-cc1aa653e50f
+	github.com/facebookgo/structtag v0.0.0-20150214074306-217e25fb9691
+	github.com/ghodss/yaml v0.0.0-20150909031657-73d445a93680
+	github.com/go-openapi/jsonpointer v0.0.0-20160704185906-46af16f9f7b1
+	github.com/go-openapi/jsonreference v0.0.0-20160704190145-13c6e3589ad9
+	github.com/go-openapi/spec v0.0.0-20170914061247-7abd5745472f
+	github.com/go-openapi/swag v0.0.0-20170606142751-f3f9494671f9
+	github.com/go-sql-driver/mysql v1.3.1-0.20170428160231-147bd02c2c51
+	github.com/gogo/protobuf v0.0.0-20170330071051-c0656edd0d9e
+	github.com/golang/glog v0.0.0-20141105023935-44145f04b68c
+	github.com/golang/protobuf v0.0.0-20171021043952-1643683e1b54
+	github.com/google/btree v0.0.0-20160524151835-7d79101e329e
+	github.com/google/gofuzz v0.0.0-20161122191042-44d81051d367
+	github.com/googleapis/gnostic v0.0.0-20170729233727-0c5108395e2d
+	github.com/gorilla/mux v1.3.1-0.20170228224354-599cba5e7b61
+	github.com/gregjones/httpcache v0.0.0-20170728041850-787624de3eb7
+	github.com/guregu/null v3.0.2-0.20160228005316-41961cea0328+incompatible
+	github.com/jmoiron/sqlx v0.0.0-20170121103519-f980a91bdc37
+	github.com/json-iterator/go v0.0.0-20170829155851-36b14963da70
+	github.com/juju/ratelimit v0.0.0-20170523012141-5b9ff8664717
+	github.com/justinas/alice v0.0.0-20160910103822-1051eaf52fca
+	github.com/kelseyhightower/envconfig v1.3.1-0.20170206223400-8bf4bbfc795e
+	github.com/mailru/easyjson v0.0.0-20170624190925-2f5df55504eb
+	github.com/patrickmn/go-cache v2.1.1-0.20180815053127-5633e0862627+incompatible
+	github.com/peterbourgon/diskv v2.0.1+incompatible
+	github.com/satori/go.uuid v1.1.1-0.20170321230731-5bf94b69c6b6
+	github.com/spf13/pflag v0.0.0-20170130214245-9ff6c6923cff
+	golang.org/x/net v0.0.0-20170809000501-1c05540f6879
+	golang.org/x/text v0.0.0-20170810154203-b19bf474d317
+	gopkg.in/go-playground/validator.v9 v9.3.5
+	gopkg.in/inf.v0 v0.9.0
+	gopkg.in/yaml.v2 v2.0.0-20150924142314-53feefa2559f
+	k8s.io/api v0.0.0-20171207041203-11147472b7c9
+	k8s.io/apimachinery v0.0.0-20171207040834-180eddb345a5
+	k8s.io/client-go v6.0.0+incompatible
+	k8s.io/kube-openapi v0.0.0-20171101183504-39a7bf85c140
+)

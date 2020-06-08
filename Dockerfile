@@ -1,9 +1,9 @@
 # build stage
-FROM golang:alpine AS build-env
+FROM golang:1.13-alpine AS build-env
 RUN mkdir -p /go/src/github.com/salestock/sersan
 WORKDIR /go/src/github.com/salestock/sersan
 COPY . .
-RUN go build -o sersan
+RUN go build
 
 # final stage
 FROM alpine

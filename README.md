@@ -45,20 +45,15 @@ Get Sersan source
 go get -u https://github.com/salestock/sersan
 ```
 
-Install all dependencies using glide
+build the application
 ```
-cd $GO_PATH/src/github.com/salestock/sersan
-glide install
-```
-
-If you have [realize](https://github.com/oxequa/realize) installed, simply run bellow command.
-```
-realize start --build --run --no-config
+cd $GOPATH/src/github.com/salestock/sersan
+go build
 ```
 
 Build docker image
 ```
-docker build -t <your domain>/sersan:latest .
+docker build -t <your domain>/sersan:<tag> .
 ```
 
 Finally, redeploy Sersan application.
@@ -93,11 +88,6 @@ Sersan is compatible with the following Selenium standalone or selenoid browser 
 - [Selenium Firefox Debug](https://hub.docker.com/r/selenium/standalone-firefox-debug)
 - [Selenoid Chrome](https://hub.docker.com/r/selenoid/chrome)
 - [Selenoid Firefox](https://hub.docker.com/r/selenoid/firefox)
-
-## Todos
-
-- Sersan UI/CLI to manage running tests
-- Support for Android and iOS emulator
 
 ## Contributing
 
