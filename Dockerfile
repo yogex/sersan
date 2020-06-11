@@ -3,6 +3,7 @@ FROM golang:1.13-alpine AS build-env
 RUN mkdir -p /go/src/github.com/salestock/sersan
 WORKDIR /go/src/github.com/salestock/sersan
 COPY . .
+RUN rm -Rf sersan
 RUN go build
 
 # final stage

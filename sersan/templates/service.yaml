@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "sersan.fullname" . }}
+  labels:
+    app: {{ template "sersan.name" . }}
+    chart: {{ template "sersan.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+  namespace: {{ .Values.namespace }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.port }}
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ template "sersan.name" . }}
+    release: {{ .Release.Name }}
