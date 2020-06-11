@@ -27,6 +27,78 @@ spec:
           env:
           - name: PORT
             value: "4444"
+{{- if .Values.browserConfigFile }}
+          - name: BROWSER_CONFIG_FILE
+            value: {{ .Values.browserConfigFile }}
+{{- end}}
+{{- if .Values.startupTimeout }}
+          - name: STARTUP_TIMEOUT
+            value: {{ .Values.startupTimeout }}
+{{- end}}
+{{- if .Values.newSessionAttemptTimeout }}
+          - name: NEW_SESSION_ATTEMPT_TIMEOUT
+            value: {{ .Values.newSessionAttemptTimeout }}
+{{- end}}
+{{- if .Values.seleniumStartupTimeout }}
+          - name: SELENIUM_STARTUP_TIMEOUT
+            value: {{ .Values.SELENIUM_STARTUP_TIMEOUT }}
+{{- end}}
+{{- if .Values.retryCount }}
+          - name: RETRY_COUNT
+            value: {{ .Values.retryCount }}
+{{- end}}
+{{- if .Values.signingKey }}
+          - name: SIGNING_KEY
+            value: {{ .Values.signingKey }}
+{{- end}}
+{{- if .Values.gridLabel }}
+          - name: GRID_LABEL
+            value: {{ .Values.gridLabel }}
+{{- end}}
+{{- if .Values.gridNodeSelectorKey }}
+          - name: NODE_SELECTOR_KEY
+            value: {{ .Values.gridNodeSelectorKey }}
+{{- end}}
+{{- if .Values.gridNodeSelectorValue }}
+          - name: NODE_SELECTOR_VALUE
+            value: {{ .Values.gridNodeSelectorValue }}
+{{- end}}
+{{- if .Values.cpuRequest }}
+          - name: CPU_REQUEST
+            value: {{ .Values.cpuRequest }}
+{{- end}}
+{{- if .Values.memoryRequest }}
+          - name: MEMORY_REQUEST
+            value: {{ .Values.memoryRequest }}
+{{- end}}
+{{- if .Values.cpuLimit }}
+          - name: CPU_LIMIT
+            value: {{ .Values.cpuLimit }}
+{{- end}}
+{{- if .Values.memoryLimit }}
+          - name: MEMORY_LIMIT
+            value: {{ .Values.memoryLimit }}
+{{- end}}
+{{- if .Values.gridTimeout }}
+          - name: GRID_TIMEOUT
+            value: {{ .Values.gridTimeout }}
+{{- end}}
+{{- if .Values.cacheTimeout }}
+          - name: CACHE_TIMEOUT
+            value: {{ .Values.cacheTimeout }}
+{{- end}}
+{{- if .Values.maxIdleConns }}
+          - name: MAX_IDLE_CONNS
+            value: {{ .Values.maxIdleConns }}
+{{- end}}
+{{- if .Values.maxIdleConnsPerHost }}
+          - name: MAX_IDLE_CONNS_PER_HOST
+            value: {{ .Values.maxIdleConnsPerHost }}
+{{- end}}
+{{- if .Values.maxConnsPerHost }}
+          - name: MAX_CONNS_PER_HOST
+            value: {{ .Values.maxConnsPerHost }}
+{{- end}}
           ports:
             - name: http
               containerPort: 4444
