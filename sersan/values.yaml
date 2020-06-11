@@ -23,6 +23,27 @@ resources:
     cpu: 50m
     memory: 20Mi
 
+# Envar
+port: ''
+browserConfigFile: ''
+startupTimeout: ''
+newSessionAttemptTimeout: ''
+seleniumStartupTimeout: ''
+retryCount: ''
+signingKey: ''
+gridLabel: ''
+gridNodeSelectorKey: ''
+gridNodeSelectorValue: ''
+cpuRequest: ''
+memoryRequest: ''
+cpuLimit: ''
+memoryLimit: ''
+gridTimeout: ''
+cacheTimeout: ''
+maxIdleConns: ''
+maxIdleConnsPerHost: ''
+maxConnsPerHost: ''
+
 nodeSelector: {}
 
 tolerations: []
