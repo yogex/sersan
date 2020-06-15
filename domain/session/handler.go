@@ -159,6 +159,13 @@ func (h SessionHandler) Create(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	reply["sessionId"] = formattedSessionID
+
+	if reply["value"] != nil {
+		if reply["value"].(map[string]interface{})["sessionId"] != nil {
+			reply["value"].(map[string]interface{})["sessionId"] = formattedSessionID
+		}
+	}
+
 	json.NewEncoder(w).Encode(reply)
 	var s struct {
 		Value struct {
@@ -239,6 +246,7 @@ func (h SessionHandler) Proxy(w http.ResponseWriter, r *http.Request) {
 				if err != nil {
 					log.Printf("Unable to delete pod %s", sessionInfo.ServiceName)
 				}
+				log.Printf("Grid %s was deleted", sessionInfo.ServiceName)
 			}()
 		}
 	}(w, r)
