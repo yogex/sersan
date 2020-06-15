@@ -28,7 +28,7 @@ spec:
           - name: PORT
             value: "4444"
 {{- if .Values.browserConfigFile }}
-          - name: BROWSER_CONFIG_FILE
+          - name: GRID_CONFIG_FILE
             value: {{ .Values.browserConfigFile }}
 {{- end}}
 {{- if .Values.startupTimeout }}
@@ -40,7 +40,7 @@ spec:
             value: {{ .Values.newSessionAttemptTimeout }}
 {{- end}}
 {{- if .Values.seleniumStartupTimeout }}
-          - name: SELENIUM_STARTUP_TIMEOUT
+          - name: GRID_STARTUP_TIMEOUT
             value: {{ .Values.SELENIUM_STARTUP_TIMEOUT }}
 {{- end}}
 {{- if .Values.retryCount }}
@@ -98,6 +98,30 @@ spec:
 {{- if .Values.maxConnsPerHost }}
           - name: MAX_CONNS_PER_HOST
             value: {{ .Values.maxConnsPerHost }}
+{{- end}}
+{{- if .Values.projectID }}
+          - name: PROJECT_ID
+            value: {{ .Values.projectID }}
+{{- end}}
+{{- if .Values.zone }}
+          - name: ZONE
+            value: {{ .Values.zone }}
+{{- end}}
+{{- if .Values.subnetwork }}
+          - name: SUBNETWORK
+            value: {{ .Values.projectID }}
+{{- end}}
+{{- if .Values.machineType }}
+          - name: MACHINE_TYPE
+            value: {{ .Values.machineType }}
+{{- end}}
+{{- if .Values.externalIP }}
+          - name: EXTERNAL_IP
+            value: {{ .Values.externalIP }}
+{{- end}}
+{{- if .Values.bucketName }}
+          - name: BUCKET_NAME
+            value: {{ .Values.bucketName }}
 {{- end}}
           ports:
             - name: http

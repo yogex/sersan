@@ -2,12 +2,13 @@
 
 # Sersan
 
-Sersan is an optimised Selenium/WebDriver hub for Kubernetes cluster written in Golang. It employs Kubernetes engine to manage the lifecycle and queue of browser containers, and ensures the test environment is always clean and fresh.
+Sersan is an optimised Selenium/WebDriver and Appium hub for Kubernetes cluster written in Golang. It employs Kubernetes engine to manage the lifecycle and queue of browser or Android emulator containers, and ensures the test environment is always clean and fresh.
 Each time it receives a new session request, Sersan will ask Kubernetes to create a new pod based on the browser and version that matches the requested capabilities. Once the pod is running, the next request will be forwarded to the created pod. The pod will be deleted if Sersan receives a delete session request.
 The session ID is a JWT token containing, among other things, the original session ID from WebDriver, the pod's IP address, the Selenium/WebDriver port, and VNC port.
 
 ## Features
 
+- Support web (on Kubernetes cluster) and Android (on Google Cloud Platform) automation
 - Easy setup and maintenance. Only execute a few commands to get everything up and ready to receive high concurrent browser testing. Updating the browser version is as easy as editing a YAML file.
 - One pod for one test. This ensures the test environment is always clean and fresh.
 - Less memory consumption.
@@ -20,14 +21,17 @@ The session ID is a JWT token containing, among other things, the original sessi
 ## Prerequisites
 
 1. Kubernetes cluster. You can use [minikube](https://github.com/kubernetes/minikube) or [kind](https://github.com/kubernetes-sigs/kind) for local development.
+2. Compute Engine on Google Cloud Platform (for Android emulator). 
 
 ## Installation
 
-To install simply use `kubectl` to apply resources.
+To install simply use `helm install` to apply resources.
 
 ```
-kubectl apply -f manifests/
+$ helm install sersan ./sersan
 ```
+
+By default, it requires service account named `sersan`. The service account must have permission to create and delete pod in the Kubernetes cluster.
 
 Check the sersan namespace (or the namespace you have specific in namespace: ) and make sure the pods are running.
 
@@ -40,6 +44,12 @@ http://<service ip>:4444/wd/hub
 
 ## Development
 
+### Prerequisite
+1. Go 1.13
+2. Docker
+3. Kubernetes Cluster
+
+### Build
 Get Sersan source
 ```
 go get -u https://github.com/salestock/sersan
@@ -48,7 +58,8 @@ go get -u https://github.com/salestock/sersan
 build the application
 ```
 cd $GOPATH/src/github.com/salestock/sersan
-go build
+go build -o server
+./server
 ```
 
 Build docker image
@@ -57,6 +68,7 @@ docker build -t <your domain>/sersan:<tag> .
 ```
 
 Finally, redeploy Sersan application.
+
 
 ## Customisation
 

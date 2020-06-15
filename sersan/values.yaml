@@ -25,10 +25,10 @@ resources:
 
 # Envar
 port: ''
-browserConfigFile: ''
+gridConfigFile: ''
 startupTimeout: ''
 newSessionAttemptTimeout: ''
-seleniumStartupTimeout: ''
+gridStartupTimeout: ''
 retryCount: ''
 signingKey: ''
 gridLabel: ''
@@ -43,6 +43,12 @@ cacheTimeout: ''
 maxIdleConns: ''
 maxIdleConnsPerHost: ''
 maxConnsPerHost: ''
+projectID: ''
+zone: ''
+subnetwork: ''
+machineType: ''
+externalIp: ''
+bucketName: ''
 
 nodeSelector: {}
 

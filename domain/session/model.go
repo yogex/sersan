@@ -1,21 +1,21 @@
 package session
 
 import (
-    "net/url"
+	"net/url"
 
-    "github.com/salestock/sersan/service"
+	"github.com/salestock/sersan/lib"
 )
 
 // Session session
 type Session struct {
-    Caps service.Caps
-    URL  *url.URL
+	Caps lib.Caps
+	URL  *url.URL
 }
 
 // Browser browser
 type Browser struct {
-    Caps    service.Caps `json:"desiredCapabilities"`
-    W3CCaps struct {
-        Caps  service.Caps `json:"alwaysMatch"`
-    } `json:"capabilities"`
+	Caps    lib.Caps `json:"desiredCapabilities"`
+	W3CCaps struct {
+		Caps lib.Caps `json:"alwaysMatch"`
+	} `json:"capabilities"`
 }

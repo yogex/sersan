@@ -9,10 +9,10 @@ import (
 
 type Config struct {
 	Port                     string `envconfig:"port" default:"4444"`
-	BrowserConfigFile        string `envconfig:"browser_config_file" default:"config/browsers.yaml"`
+	GridConfigFile           string `envconfig:"grid_config_file" default:"config/grids.yaml"`
 	StartupTimeout           int32  `envconfig:"startup_timeout" default:"900000"`
 	NewSessionAttemptTimeout int32  `envconfig:"new_session_attempt_timeout" default:"60000"`
-	SeleniumStartupTimeout   int32  `envconfig:"selenium_startup_timeout" default:"60000"`
+	GridStartupTimeout       int32  `envconfig:"grid_startup_timeout" default:"60000"`
 	RetryCount               int32  `envconfig:"retry_count" default:"30"`
 	SigningKey               string `envconfig:"signing_key" default:"secret_key"`
 	GridLabel                string `envconfig:"grid_label" default:"dev"`
@@ -27,6 +27,12 @@ type Config struct {
 	MaxIdleConns             int    `envconfig:"max_idle_conns" default:"100"`
 	MaxIdleConnsPerHost      int    `envconfig:"max_idle_conns_per_host" default:"100"`
 	MaxConnsPerHost          int    `envconfig:"max_conns_per_host" default:"100"`
+	ProjectID                string `envconfig:"project_id" default:""`
+	Zone                     string `envconfig:"zone" default:""`
+	Subnetwork               string `envconfig:"subnetwork" default:""`
+	MachineType              string `envconfig:"machine_type" default:"custom-2-4096"`
+	ExternalIP               bool   `envconfig:"external_ip" default:"false"`
+	BucketName               string `envconfig:"bucket_name" default:"sersan-api"`
 }
 
 var conf Config
