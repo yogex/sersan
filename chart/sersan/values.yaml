@@ -8,7 +8,7 @@ namespace: sersan
 
 image:
   repository: dimasaryoprakoso/sersan
-  tag: 1.0.0
+  tag: 1.1.0-rc
   pullPolicy: IfNotPresent
 
 service:
@@ -57,3 +57,4 @@ tolerations: []
 affinity: {}
 
 serviceAccountName: sersan
+GoogleApplicationCredential: ''

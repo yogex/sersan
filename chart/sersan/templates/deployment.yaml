@@ -123,6 +123,10 @@ spec:
           - name: BUCKET_NAME
             value: {{ .Values.bucketName }}
 {{- end}}
+{{- if .Values.GoogleApplicationCredential }}
+          - name: GOOGLE_APPLICATION_CREDENTIALS
+            value: /etc/gcp/key.json
+{{- end}}
           ports:
             - name: http
               containerPort: 4444
@@ -138,6 +142,12 @@ spec:
             timeoutSeconds: 10
           resources:
 {{ toYaml .Values.resources | indent 12 }}
+{{- if .Values.GoogleApplicationCredential }}
+          volumeMounts:
+            - mountPath: /etc/gcp
+              name: {{ .Values.GoogleApplicationCredential }}
+              readOnly: true
+{{- end}}
     {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
@@ -151,3 +161,11 @@ spec:
 {{ toYaml . | indent 8 }}
     {{- end }}
       serviceAccountName: {{ .Values.serviceAccountName }}
+{{- if .Values.GoogleApplicationCredential }}
+      volumes:
+      - name: {{ .Values.GoogleApplicationCredential }}
+        secret:
+          defaultMode: 420
+          secretName: {{ .Values.GoogleApplicationCredential }}
+{{- end}}
+
