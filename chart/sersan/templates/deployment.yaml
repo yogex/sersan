@@ -142,8 +142,11 @@ spec:
             timeoutSeconds: 10
           resources:
 {{ toYaml .Values.resources | indent 12 }}
+            volumeMounts:
+            - mountPath: /app/config
+              name: sersan-grids
+              readOnly: true
 {{- if .Values.GoogleApplicationCredential }}
-          volumeMounts:
             - mountPath: /etc/gcp
               name: {{ .Values.GoogleApplicationCredential }}
               readOnly: true
@@ -161,8 +164,11 @@ spec:
 {{ toYaml . | indent 8 }}
     {{- end }}
       serviceAccountName: {{ .Values.serviceAccountName }}
-{{- if .Values.GoogleApplicationCredential }}
       volumes:
+      - name: sersan-grids
+        configMap:
+          name: sersan-grids
+{{- if .Values.GoogleApplicationCredential }}
       - name: {{ .Values.GoogleApplicationCredential }}
         secret:
           defaultMode: 420
