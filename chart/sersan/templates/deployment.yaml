@@ -142,14 +142,14 @@ spec:
             timeoutSeconds: 10
           resources:
 {{ toYaml .Values.resources | indent 12 }}
-            volumeMounts:
-            - mountPath: /app/config
-              name: sersan-grids
-              readOnly: true
+          volumeMounts:
+          - mountPath: /app/config
+            name: sersan-grids
+            readOnly: true
 {{- if .Values.GoogleApplicationCredential }}
-            - mountPath: /etc/gcp
-              name: {{ .Values.GoogleApplicationCredential }}
-              readOnly: true
+          - mountPath: /etc/gcp
+            name: {{ .Values.GoogleApplicationCredential }}
+            readOnly: true
 {{- end}}
     {{- with .Values.nodeSelector }}
       nodeSelector:
