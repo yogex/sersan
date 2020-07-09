@@ -47,7 +47,7 @@ projectID: ''
 zone: ''
 subnetwork: ''
 machineType: ''
-externalIp: ''
+externalIP: ''
 bucketName: ''
 
 nodeSelector: {}
