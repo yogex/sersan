@@ -12,8 +12,8 @@ import (
 
 	"github.com/facebookgo/inject"
 	cache "github.com/patrickmn/go-cache"
-	"github.com/growbak/hub/config"
-	"github.com/growbak/hub/lib"
+	"github.com/salestock/sersan/config"
+	"github.com/salestock/sersan/lib"
 )
 
 func main() {

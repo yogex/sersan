@@ -10,8 +10,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/growbak/hub/config"
-	"github.com/growbak/hub/utils"
+	"github.com/salestock/sersan/config"
+	"github.com/salestock/sersan/utils"
 	apiv1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"

@@ -1,7 +1,7 @@
 package session
 
 import (
-	"github.com/growbak/hub/lib"
+	"github.com/salestock/sersan/lib"
 )
 
 // SessionService Session service

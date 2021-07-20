@@ -1,0 +1,177 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "sersan.fullname" . }}
+  labels:
+    app: {{ template "sersan.name" . }}
+    chart: {{ template "sersan.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "sersan.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "sersan.name" . }}
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+          - name: PORT
+            value: "4444"
+{{- if .Values.browserConfigFile }}
+          - name: GRID_CONFIG_FILE
+            value: {{ .Values.browserConfigFile }}
+{{- end}}
+{{- if .Values.startupTimeout }}
+          - name: STARTUP_TIMEOUT
+            value: {{ .Values.startupTimeout }}
+{{- end}}
+{{- if .Values.newSessionAttemptTimeout }}
+          - name: NEW_SESSION_ATTEMPT_TIMEOUT
+            value: {{ .Values.newSessionAttemptTimeout }}
+{{- end}}
+{{- if .Values.seleniumStartupTimeout }}
+          - name: GRID_STARTUP_TIMEOUT
+            value: {{ .Values.SELENIUM_STARTUP_TIMEOUT }}
+{{- end}}
+{{- if .Values.retryCount }}
+          - name: RETRY_COUNT
+            value: {{ .Values.retryCount }}
+{{- end}}
+{{- if .Values.signingKey }}
+          - name: SIGNING_KEY
+            value: {{ .Values.signingKey }}
+{{- end}}
+{{- if .Values.gridLabel }}
+          - name: GRID_LABEL
+            value: {{ .Values.gridLabel }}
+{{- end}}
+{{- if .Values.gridNodeSelectorKey }}
+          - name: NODE_SELECTOR_KEY
+            value: {{ .Values.gridNodeSelectorKey }}
+{{- end}}
+{{- if .Values.gridNodeSelectorValue }}
+          - name: NODE_SELECTOR_VALUE
+            value: {{ .Values.gridNodeSelectorValue }}
+{{- end}}
+{{- if .Values.cpuRequest }}
+          - name: CPU_REQUEST
+            value: {{ .Values.cpuRequest }}
+{{- end}}
+{{- if .Values.memoryRequest }}
+          - name: MEMORY_REQUEST
+            value: {{ .Values.memoryRequest }}
+{{- end}}
+{{- if .Values.cpuLimit }}
+          - name: CPU_LIMIT
+            value: {{ .Values.cpuLimit }}
+{{- end}}
+{{- if .Values.memoryLimit }}
+          - name: MEMORY_LIMIT
+            value: {{ .Values.memoryLimit }}
+{{- end}}
+{{- if .Values.gridTimeout }}
+          - name: GRID_TIMEOUT
+            value: {{ .Values.gridTimeout }}
+{{- end}}
+{{- if .Values.cacheTimeout }}
+          - name: CACHE_TIMEOUT
+            value: {{ .Values.cacheTimeout }}
+{{- end}}
+{{- if .Values.maxIdleConns }}
+          - name: MAX_IDLE_CONNS
+            value: {{ .Values.maxIdleConns }}
+{{- end}}
+{{- if .Values.maxIdleConnsPerHost }}
+          - name: MAX_IDLE_CONNS_PER_HOST
+            value: {{ .Values.maxIdleConnsPerHost }}
+{{- end}}
+{{- if .Values.maxConnsPerHost }}
+          - name: MAX_CONNS_PER_HOST
+            value: {{ .Values.maxConnsPerHost }}
+{{- end}}
+{{- if .Values.projectID }}
+          - name: PROJECT_ID
+            value: {{ .Values.projectID }}
+{{- end}}
+{{- if .Values.zone }}
+          - name: ZONE
+            value: {{ .Values.zone }}
+{{- end}}
+{{- if .Values.subnetwork }}
+          - name: SUBNETWORK
+            value: {{ .Values.projectID }}
+{{- end}}
+{{- if .Values.machineType }}
+          - name: MACHINE_TYPE
+            value: {{ .Values.machineType }}
+{{- end}}
+{{- if .Values.externalIP }}
+          - name: EXTERNAL_IP
+            value: {{ .Values.externalIP }}
+{{- end}}
+{{- if .Values.bucketName }}
+          - name: BUCKET_NAME
+            value: {{ .Values.bucketName }}
+{{- end}}
+{{- if .Values.GoogleApplicationCredential }}
+          - name: GOOGLE_APPLICATION_CREDENTIALS
+            value: /etc/gcp/key.json
+{{- end}}
+          ports:
+            - name: http
+              containerPort: 4444
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 1
+            httpGet:
+              path: /health
+              port: 4444
+              scheme: HTTP
+            periodSeconds: 10
+            successThreshold: 2
+            timeoutSeconds: 10
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+          volumeMounts:
+          - mountPath: /app/config
+            name: sersan-grids
+            readOnly: true
+{{- if .Values.GoogleApplicationCredential }}
+          - mountPath: /etc/gcp
+            name: {{ .Values.GoogleApplicationCredential }}
+            readOnly: true
+{{- end}}
+    {{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+      serviceAccountName: {{ .Values.serviceAccountName }}
+      volumes:
+      - name: sersan-grids
+        configMap:
+          name: sersan-grids
+{{- if .Values.GoogleApplicationCredential }}
+      - name: {{ .Values.GoogleApplicationCredential }}
+        secret:
+          defaultMode: 420
+          secretName: {{ .Values.GoogleApplicationCredential }}
+{{- end}}
+

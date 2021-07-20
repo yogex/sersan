@@ -1,0 +1,60 @@
+# Default values for sersan.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 3
+
+namespace: sersan
+
+image:
+  repository: dimasaryoprakoso/sersan
+  tag: 1.1.0-rc
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 4444
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 100Mi
+  requests:
+    cpu: 50m
+    memory: 20Mi
+
+# Envar
+port: ''
+gridConfigFile: ''
+startupTimeout: ''
+newSessionAttemptTimeout: ''
+gridStartupTimeout: ''
+retryCount: ''
+signingKey: ''
+gridLabel: ''
+gridNodeSelectorKey: ''
+gridNodeSelectorValue: ''
+cpuRequest: ''
+memoryRequest: ''
+cpuLimit: ''
+memoryLimit: ''
+gridTimeout: ''
+cacheTimeout: ''
+maxIdleConns: ''
+maxIdleConnsPerHost: ''
+maxConnsPerHost: ''
+projectID: ''
+zone: ''
+subnetwork: ''
+machineType: ''
+externalIP: ''
+bucketName: ''
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+serviceAccountName: sersan
+GoogleApplicationCredential: ''
