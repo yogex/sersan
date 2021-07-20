@@ -17,8 +17,8 @@ import (
 	"time"
 
 	cache "github.com/patrickmn/go-cache"
-	"github.com/salestock/sersan/config"
-	"github.com/salestock/sersan/utils"
+	"github.com/growbak/hub/config"
+	"github.com/growbak/hub/utils"
 )
 
 const slash = "/"

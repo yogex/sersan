@@ -3,7 +3,7 @@ package health
 import (
     "net/http"
 
-    "github.com/salestock/sersan/utils"
+    "github.com/growbak/hub/utils"
 )
 
 type HealthHandler struct {

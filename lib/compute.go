@@ -11,8 +11,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/salestock/sersan/config"
-	"github.com/salestock/sersan/utils"
+	"github.com/growbak/hub/config"
+	"github.com/growbak/hub/utils"
 
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"

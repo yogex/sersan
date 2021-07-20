@@ -3,7 +3,7 @@ package session
 import (
 	"net/url"
 
-	"github.com/salestock/sersan/lib"
+	"github.com/growbak/hub/lib"
 )
 
 // Session session
