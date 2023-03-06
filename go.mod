@@ -7,7 +7,7 @@ require (
 	github.com/PuerkitoBio/urlesc v0.0.0-20160726150825-5bd2802263f2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
-	github.com/emicklei/go-restful v1.1.4-0.20170410110728-ff4f55a20633 // indirect
+	github.com/emicklei/go-restful v2.16.0+incompatible // indirect
 	github.com/facebookgo/ensure v0.0.0-20200202191622-63f1cf65ac4c // indirect
 	github.com/facebookgo/inject v0.0.0-20161006174721-cc1aa653e50f
 	github.com/facebookgo/stack v0.0.0-20160209184415-751773369052 // indirect
